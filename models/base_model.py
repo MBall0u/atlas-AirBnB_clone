@@ -11,19 +11,21 @@ import uuid
 from datetime import datetime
 
 class BaseModel:
-    """
-    this is a simple class that will have derived classes pull from it.
-    """
+    def __init__(self, *args, **kwargs):
+        if not kwargs:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
+        else:
+            if '__class__' in kwargs:
+                del kwargs['__class__']
 
-    def __init__(self):
-        """
-        initializes an instance by giving it a unique id and setting the time
-        it was created at.
-        """
+            for key, value in kwargs.items():
+                if key in ['created_at', 'updated_at']:
+                    kwargs[key] = datetime.fromisoformat(value)
 
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
+            for key, value in kwargs.items():
+                setattr(self, key, value)
 
     def __str__(self):
         """
@@ -54,3 +56,17 @@ class BaseModel:
         my_dict['updated_at'] = self.updated_at.isoformat()
         my_dict['__class__'] = self.__class__.__name__
         return my_dict
+
+    @classmethod
+    def from_dict(cls, inst_dict):
+        for attr in ['id', 'created_at', 'updated_at']:
+            if attr in inst_dict:
+                del inst_dict[attr]
+
+        for key, value in inst_dict.items():
+            if isinstance(value, dict):
+                inst_dict[key] = cls.from_dict(value)
+
+        new_instance = cls(**inst_dict)
+
+        return new_instance
