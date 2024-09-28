@@ -13,7 +13,10 @@ from datetime import datetime
 class BaseModel:
     def __init__(self, *args, **kwargs):
         """
-        
+        initializes an instance based on if it does or does not have kwargs.
+        if no kwargs it sets up as normal with uuid and datetime.
+        if there are kwargs then it initializes based off the dictionaries
+        values.
         """
 
         if not kwargs:
@@ -64,13 +67,13 @@ class BaseModel:
     @classmethod
     def from_dict(cls, inst_dict):
         """
-        
+        creates a new instance from a dictionary representation.
 
         Args:
-            inst_dict (_type_): _description_
+            inst_dict (dict): dictionary representation of an instance.
 
         Returns:
-            _type_: _description_
+            cls: a new instance
         """
 
         for attr in ['id', 'created_at', 'updated_at']:
