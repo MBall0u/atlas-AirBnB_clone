@@ -7,7 +7,7 @@ as a python package.
 
 """
 
-import models.file_storage
+from models.file_storage import FileStorage
 
 storage = FileStorage()
-reload(storage)
+storage.reload()
