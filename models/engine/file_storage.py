@@ -43,7 +43,6 @@ class FileStorage():
     def reload(self):
         """ This method deserializes the json file to __objects"""
         from models.base_model import BaseModel
-        from models.__init__ import storage
         from models.user import User
         from models.amenity import Amenity
         from models.city import City
