@@ -6,3 +6,8 @@ but just in case; this file marks a directory
 as a python package.
 
 """
+
+import model.file_storage
+
+storage = FileStorage()
+reload(storage)
