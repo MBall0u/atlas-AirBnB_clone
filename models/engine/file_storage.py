@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """ This module defines a class named FileStorage"""
+import importlib
 import json
 import os
 from models.base_model import BaseModel
