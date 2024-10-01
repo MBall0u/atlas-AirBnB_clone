@@ -36,7 +36,8 @@ class FileStorage():
         """ This method serializes __objects to the json file"""
         serial_objects = {}
         for key, obj in self.__objects.items():
-            serial_objects[key] = obj.to_dict()
+            if hasattr(obj, 'to_dict'):
+                serial_objects[key] = obj.to_dict()
         with open(self.__file_path, 'w') as f:
             json.dump(serial_objects, f)
 
