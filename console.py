@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """ Console module """
+import models
 import cmd
 import sys
 import uuid
@@ -283,7 +284,7 @@ class HBNBCommand(cmd.Cmd):
 
         obj = storage._FileStorage__objects[key]
 
-        storage.update(obj, attribute_name, value)
+        models.storage.update(obj, attribute_name, value)
 
 
 if __name__ == "__main__":
