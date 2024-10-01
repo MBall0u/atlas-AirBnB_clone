@@ -1,4 +1,8 @@
-#this is a file containing all of the contributors of this repository
-
-Michael Ballou <michael.ballou@atlasschool.com>
-Khiry Dixon-Manning <>
+#!/usr/bin/python3
+"""
+console.py: basic command line interpreter for our AirBnB website.
+"""
+__authors__ = "Michael Ballou, Khiry Dixon-Manning"
+__copyright__ = None
+__status__ = "Development"
+__version__ = 1.0
