@@ -9,7 +9,7 @@ Returns:
 
 import uuid
 from datetime import datetime
-from . import storage
+import models
 
 class BaseModel:
     def __init__(self, *args, **kwargs):
@@ -35,7 +35,7 @@ class BaseModel:
             for key, value in kwargs.items():
                 setattr(self, key, value)
 
-        storage.new(self)
+        models.storage.new(self)
 
     def __str__(self):
         """
@@ -50,7 +50,7 @@ class BaseModel:
         """
 
         self.updated_at = datetime.now()
-        storage.save()
+        models.storage.save()
 
     def to_dict(self):
         """
