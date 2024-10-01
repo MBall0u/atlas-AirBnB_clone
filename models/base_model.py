@@ -9,7 +9,7 @@ Returns:
 
 import uuid
 from datetime import datetime
-from . import storage
+from models import storage
 
 class BaseModel:
     def __init__(self, *args, **kwargs):
