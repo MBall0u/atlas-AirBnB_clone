@@ -27,12 +27,12 @@ class FileStorage():
             raise ValueError("obj must be an object instance, got '{}".format(
                 type(obj).__name__))
         setattr(obj, key, value)
-        models.storage.save(self)
+        storage.save(self)
 
     def remove(self, key):
         """ This method removes instance and saves to json file"""
         del FileStorage.__objects[key]
-        models.storage.save(self)
+        storage.save(self)
 
     def save(self):
         """ This method serializes __objects to the json file"""
