@@ -32,7 +32,7 @@ To start the command interpreter, simply run the following command in your termi
 
 ```bash
 python console.py
-
+```
 Once started, you will be greeted with a prompt ((hbnb)) where you can enter commands.
 
 ## Using the Command Interpreter
@@ -50,5 +50,6 @@ Here are some of the basic commands you can use in the command interpreter:
 ### Examples
 
 1. **Creating a User**:
-   ```bash
-   (hbnb) create User
+```bash
+(hbnb) create User
+```
