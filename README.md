@@ -11,8 +11,6 @@ Welcome to the AirBnB Clone repository! This project is the first step toward bu
 - [Files and Directories](#files-and-directories)
 - [Storage](#storage)
 - [Getting Started](#getting-started)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Overview
 
