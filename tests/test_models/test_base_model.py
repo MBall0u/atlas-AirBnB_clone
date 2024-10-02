@@ -1,6 +1,8 @@
 import unittest
 from datetime import datetime
-from model.base_model import BaseModel
+from uuid import UUID
+from models import storage
+from base_model import BaseModel
 
 class TestBaseModel(unittest.TestCase):
 
@@ -8,23 +10,22 @@ class TestBaseModel(unittest.TestCase):
         self.base_model = BaseModel()
 
     def test_init_without_args(self):
-        model = BaseModel()
-        self.assertIsNotNone(model.id)
-        self.assertIsInstance(model.created_at, datetime)
-        self.assertIsInstance(model.updated_at, datetime)
+        self.assertIsInstance(self.base_model.id, UUID)
+        self.assertIsInstance(self.base_model.created_at, datetime)
+        self.assertIsInstance(self.base_model.updated_at, datetime)
 
     def test_init_with_args(self):
         custom_data = {'name': 'Test', 'age': 30}
         model = BaseModel(**custom_data)
         self.assertEqual(model.name, 'Test')
         self.assertEqual(model.age, 30)
-        self.assertIsNotNone(model.id)
+        self.assertIsInstance(model.id, UUID)
         self.assertIsInstance(model.created_at, datetime)
         self.assertIsInstance(model.updated_at, datetime)
 
     def test_to_dict(self):
         expected_dict = {
-            'id': str(uuid.uuid4()),
+            'id': str(self.base_model.id),
             'created_at': self.base_model.created_at.isoformat(),
             'updated_at': self.base_model.updated_at.isoformat(),
             '__class__': 'BaseModel'
@@ -56,4 +57,3 @@ class TestBaseModel(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-
