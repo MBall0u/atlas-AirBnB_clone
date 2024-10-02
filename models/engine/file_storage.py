@@ -45,6 +45,7 @@ class FileStorage():
 
     def reload(self):
         """ This method deserializes the json file to __objects"""
+        from models.user import User
         try:
             with open(self.__file_path, "r", encoding="utf-8") as f:
                 data = json.load(f)
